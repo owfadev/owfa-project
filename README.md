@@ -1,11 +1,23 @@
-# pkg-project
-## Why you'd want this
+# owfa-project
 
-Project containers with memory: self-describing workspaces your agent picks up cold across sessions, with an append-only decision ledger.
+**OWFA project protocol package** — the second `kind: protocol` package (`protocol:
+project`, `provides: project.org.v1`): for workspaces whose primary product *is* the
+project — the project tree is the body, and the protocol owns exactly one territory
+directory, `PROJECT/`. Six members (project, decisions, journal, index, check, develop)
+give the workspace a self-sufficient baseline: an ADR-lite decision ledger, a rolling
+run journal, a project-aware index with declared anchors, a scoped protocol check, and
+a five-step dev-loop command (`owfa-develop`) with a generic release gate plus a
+dogfood clause for owfa-on-owfa. Replaces this repository's former content (the legacy
+vw `projects/`-container domain package, which remains installable dual-track with a
+one-year sunset review after the bridge stabilizes).
 
-- New session, zero re-briefing — goals, stages, tasks and decisions live in project.md where every agent re-reads them
-- Drift-checked against a declaration page: abandoned or renamed projects surface mechanically
-- Full read/write inside the container, disclosed to the wiki; your other territories stay clean
+- Protocol charter: [docs/protocol.md](docs/protocol.md) — the double-tax motivation,
+  slot mapping, vocabulary, red lines, bridge & ABI anchors
+- Members: [PKG.yaml](PKG.yaml) for the roster; each `<member>/PLUGIN.md` for the
+  charter
+- Machinery: [pipeline.py](pipeline.py) at the package root (index / journal / verify;
+  the kernel never calls it)
+- Requires framework `>= 0.4.5` (protocol-kind discipline R1-R10; AGENTS-injection
+  marker parameterization)
 
-
-vault-wiki domain package **project** — see [PKG.yaml](PKG.yaml) for members/connectors/compat; mechanism in the [framework](https://github.com/owfadev/owfa) (.meta/docs/packages.md).
+The kernel and plugin mechanics live in the framework ([owfa](https://github.com/owfadev/owfa)).
