@@ -1,21 +1,16 @@
 id: project
-version: 0.5
-depends:
-  - domain
-  - wiki
-  - trust
-  - log
-updated: 2026-10-06
+schema_version: 1
+version: 0.1
+depends: []
+updated: 2026-11-15
 attachment:
-  - "projects/ — project containers (the third container under the root, workspaces: full agent read/write; one directory per project)"
-  - "wiki/projects.md — declaration page (`projects` block mapping = project name → one sentence; bidirectional diff drift detection, the structure precedent)"
-fields:
-  projects: "block mapping (declaration page) — project name → one-sentence positioning; keys should correspond one-to-one with the directories under projects/ (bidirectional diff)"
-inject: "Project container domain projects/<name>/ (workspaces, full agent read/write — versus vault append-only): body and tracking entirely in-folder, self-description project.md (four sections: goal & context / stages / tasks as lines / decisions append-only); wiki side only the declaration page wiki/projects.md (projects block mapping, bidirectional diff against the directories, drift = warning); searches involving project content go directly to the projects/ subtree; boundary with todo — todo is the agent's working set, project.md tasks the persistent source of truth"
+  - "PROJECT/ — the protocol's single territory directory (everything the protocol owns lives inside it; the project tree itself is the body and gets zero protocol containers)"
+  - "AGENTS.md injection region — project-side agent charter, additive injection (created by init when absent; marker-name parameterization lands with kernel 0.4.5)"
+  - ".owfa/WORKSPACE.yaml — workspace marker (kernel-home F2 discovery; gitignore template rides adopt)"
+fields: {}
+inject: "Territory `PROJECT/` (the protocol's only one — the project tree is the body): syntax `PROJECT/<member>/`; red lines — never modify project code, outside PROJECT/ read-only, no credentials; entering = journal tail + git log; details PLUGIN.md"
 usage:
-  - Creating a project: create a directory under `projects/` + the `project.md` self-description (four sections, may start empty), add a line on the declaration page (key = directory name)
-  - Task flow: `[ ]`→`[x]` inside the self-description leaves the completion trace (lines never deleted); stage checkboxes likewise
-  - Drift handling: check reports undeclared directories / declarations without directories → add the declaration or migrate, disposal belongs to the human
-  - Retrieval: when project content is involved, search the `projects/<name>/` subtree directly (the wiki index does not cover containers)
+  - Territory syntax: every protocol write lands under `PROJECT/` or `PROJECT/<member>/`; a write anywhere else requires an explicitly declared target in the command
+  - Freshness on entering (the hot slot's project form): read `PROJECT/journal.md` tail window + `git log --oneline -10` before acting on the project
 checks:
-  - Semantic items (v0.1 manual, attached audit deferred): type: project outside `wiki/projects.md` → error; a declared key with no directory / an undeclared directory → warning (bidirectional diff); an in-progress project's self-description updated over 30 days ago → warning (stall triage)
+  - Writes outside PROJECT/ without an explicit declared target → error (semantic item, check command; verifiable via git)

@@ -1,0 +1,15 @@
+id: index
+schema_version: 1
+version: 0.1
+depends:
+  - project
+updated: 2026-11-15
+attachment:
+  - "PROJECT/index.md — the project-aware index: protocol pages under PROJECT/ plus the hand-maintained anchors block; derived outside the anchors block, never hand-edited"
+fields: {}
+inject: "Index `PROJECT/index.md`: derived page list (all .md under PROJECT/ minus reserved names, archive/, packages/) + preserved hand `## Anchors` block; rebuild via `pipeline.py index`; code search is toolchain-native; details PLUGIN.md"
+usage:
+  - Post-write rebuild (mechanical, automatic): `python .owfa/plugins/domains/project/pipeline.py index` (idempotent; no diff means consistent); LLMs never hand-write the page list — the anchors block is the only hand-editable part
+checks:
+  - Deviation between the page list and the actual PROJECT/ page set (attached audit `check/scripts/check.py`) → fixed by running `pipeline.py index`
+  - A declared anchor that no longer exists in the repository → anchor drift, warning (repair = update the anchors block by hand)

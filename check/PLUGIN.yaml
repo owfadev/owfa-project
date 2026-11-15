@@ -1,0 +1,20 @@
+id: check
+schema_version: 1
+version: 0.1
+depends:
+  - project
+  - decisions
+  - journal
+  - index
+updated: 2026-11-15
+attachment:
+  - "scripts/check.py — attached audit (the protocol's health surface, mechanical items)"
+fields: {}
+usage_routes:
+  - owfa-develop
+inject: "Protocol check `scripts/check.py`: journal date+enum+capacity, decisions headings, index drift, anchor drift; project tests/lint stay toolchain-native; run via `kernel audit` / `pipeline.py verify`; details PLUGIN.md"
+usage:
+  - Running (mechanical, automatic): `python .owfa/scripts/owfa_kernel.py audit` executes every attached audit including this one; `python .owfa/plugins/domains/project/pipeline.py verify` bundles it with the drift check as post-write self-attestation
+  - Semantic items (owfa-check / check command): writes outside PROJECT/ without a declared target → error; historical ledger entries modified → error (verifiable via git)
+checks:
+  - Undated/off-enum journal entries, malformed decisions headings, index drift, journal capacity, missing anchors, stale workspace marker → the attached audit reports; repair per the message (rebuild index / archive journal / fix the anchors block)
