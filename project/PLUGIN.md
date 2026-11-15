@@ -2,7 +2,7 @@
 
 ## Role
 
-The landholder's charter, shrunk to one page: under the **project protocol** the project
+The holder's charter, shrunk to one page: under the **project protocol** the project
 tree itself is the body — code, docs and data each live where the project natively puts
 them, and the protocol owns exactly one territory directory, `PROJECT/`. There is no
 vault/wiki split here; that organization serves workspaces whose primary product is

@@ -3,7 +3,7 @@ id: project
 kind: protocol
 protocol: project
 version: 0.1.1
-compat: ">= 0.4.5"
+compat: ">= 0.4.6"  # floor raised from >= 0.4.5: 0.4.6 guarantees the ABI-validation kernel machinery for protocol packages with an abi block
 abi:
   # abi-spec v2 §5 — the ABI access face this package ships (docs/abi.md has the full rules)
   semantics: [list, get, search, recent]
@@ -15,8 +15,8 @@ skeleton: [PROJECT/]
 uninstall:
   # anchors = the append-only ledgers, the human-owned trace (M2: derived pages carry no anchor)
   anchors: [PROJECT/decisions.md, PROJECT/journal.md]
-  # retains covers the skeleton (R5); PROJECT/packages/ is the machine zone — deleted on
-  # planned machine zone — enforcement rides kernel-home (uninstall does not sweep it today)
+  # Plain statement: today nothing under PROJECT/ is swept on uninstall (retains = [PROJECT/]).
+  # A packages/ machine-zone sweep is future kernel-home work; until that lands, retains stays [PROJECT/].
   retains: [PROJECT/]
   credentials: []
   bridges: []
