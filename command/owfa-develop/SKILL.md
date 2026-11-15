@@ -1,7 +1,7 @@
 ---
 name: owfa-develop
-owner: develop
-consumes: [develop, project]
+owner: owfadevelop
+consumes: [owfadevelop, project]
 description: "Run the project dev loop: environment / sandbox / iterate / test / release gate — a five-step flow for developing a project whose workspace runs the project protocol. Triggers on: develop, dev loop, 开发迭代, iterate on this project, cut a release."
 ---
 
@@ -19,12 +19,12 @@ under `PROJECT/`). Operational detail and territory contracts: read
 
 Write: PROJECT/ (dev territory, decisions, journal — per each member's contract),
 test-repo/ (disposable sandbox)
-Read: the project tree (code, docs, native self-description), PROJECT/dev/env.md,
+Read: the project tree (code, docs, native self-description), PROJECT/owfadevelop/env.md,
 `.owfa/scripts/owfa_kernel.py`
 
 ## Steps
 
-1. **Environment** — read `PROJECT/dev/env.md` (create it on first use from the host's
+1. **Environment** — read `PROJECT/owfadevelop/env.md` (create it on first use from the host's
    declarations: interpreter, package manager, PATH quirks, tool locations). Honor it
    for the whole session; the host's mandates (e.g. a uv-only Python policy) are law,
    never re-discovered ad hoc.
@@ -41,7 +41,7 @@ Read: the project tree (code, docs, native self-description), PROJECT/dev/env.md
    the native suite green before any release action.
 5. **Release gate** — two clauses:
    - **Generic clause (every project)**: tests green (step ④) · version and changelog
-     updated · release ledger entry appended to `PROJECT/dev/releases.md` · journal entry
+     updated · release ledger entry appended to `PROJECT/owfadevelop/releases.md` · journal entry
      written (`develop` type) · the project's declared packaging/distribution steps run.
    - **Dogfood clause (owfa developing owfa)**: on top of the generic clause —
      `verify-release` / blessed-suite sync (`sync-blessed` / five-carrier parity) /
@@ -64,4 +64,4 @@ then `pipeline.py verify`; commit per the project's own git discipline.
 
 ## Language
 
-Follow the session language unless `PROJECT/dev/env.md` declares otherwise.
+Follow the session language unless `PROJECT/owfadevelop/env.md` declares otherwise.

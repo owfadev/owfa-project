@@ -1,4 +1,4 @@
-id: develop
+id: owfadevelop
 schema_version: 1
 version: 0.1
 depends:
@@ -7,14 +7,14 @@ depends:
   - journal
 updated: 2026-11-15
 attachment:
-  - "PROJECT/dev/ — development knowledge territory: env.md (environment page — host declarations the dev loop must honor) and releases.md (release ledger, append-only)"
+  - "PROJECT/owfadevelop/ — development knowledge territory: env.md (environment page — host declarations the dev loop must honor) and releases.md (release ledger, append-only)"
   - "command/owfa-develop/SKILL.md — the five-step dev-loop command"
 fields: {}
 commands:
   - owfa-develop
-inject: "Dev territory `PROJECT/dev/` (env page + release ledger); dev loop → owfa-develop command (①env ②sandbox ③iterate ④test ⑤release gate: generic + dogfood clauses); conclusions distill to decisions.md; details PLUGIN.md"
+inject: "Dev territory `PROJECT/owfadevelop/` (env page + release ledger); dev loop → owfa-develop command (①env ②sandbox ③iterate ④test ⑤release gate: generic + dogfood clauses); conclusions distill to decisions.md; details PLUGIN.md"
 usage:
   - Dev-loop sessions run via the owfa-develop command (its SKILL is the operational detail); every session closes with a `develop` journal entry
   - Distillation (on-demand bridge): a dev session's durable conclusion lands in PROJECT/decisions.md as a D-entry referencing the session's journal entry — process stays in the journal, reasons land in the ledger
 checks:
-  - PROJECT/dev/env.md present once the territory is used (absent = the loop reads host declarations from nowhere) → info
+  - PROJECT/owfadevelop/env.md present once the territory is used (absent = the loop reads host declarations from nowhere) → info

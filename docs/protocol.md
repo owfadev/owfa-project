@@ -110,9 +110,10 @@ name-parameterization lands with kernel 0.4.5 — until then a project workspace
 carries the generic inject markers, mechanically identical, vocabulary to be cleaned by
 that kernel release).
 
-## Scope rulings（讨论定稿）
+## Scope rulings（owner 定稿）
 
-**一个工作区一个项目，且项目 = 一个 git 根。** 判据三件：独立版本史、独立目标陈述、独立生死。workspace 身份（WORKSPACE.yaml/注册表/发现）按原子单位设计，多项目的统一视图走注册表与联邦检索（`owfa search`），不走单工作区多项目。**monorepo 是合法形态但算一个项目**（一个 git 根、一个目标陈述），内部 packages/ 是项目内部结构——协议零干预区，组织方式归项目自己的工具链。
+**定位**：project 协议 = agent 在人类监督下进行开发的通用框架——为合法化开发工作而设：每步有时间账（journal）、每个决定有理由账（decisions）、每次收尾有自证（check/verify），人类监督有完整审计面。
 
-**子项目三情形**：①真子项目长大 → 毕业分家（独立 git + 独立工作区；可物理嵌套——workspace 发现是 nearest-wins，父目录命中父工作区、子目录命中子工作区，各自 PROJECT/ 各自账本，互不干扰）；②monorepo 内部包 → 不是项目，至多在 index 锚点引用；③vendored 依赖/submodule → 项目资产，协议不给锚点。「子项目」的唯一正式通道是毕业（进化阶梯），原工作区留一行指针。
+**一个工作区一个项目，项目 = 一个 git 根**（判据：独立目标 + 独立生命周期）。多项目 = 多开工作区（注册表 + 联邦检索提供统一视图）。monorepo 是合法形态但算一个项目；其内部结构是项目自己的领地，协议零干预。不考虑子项目——长大要独立的，直接分家为新工作区。
+
 

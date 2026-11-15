@@ -4,7 +4,7 @@ kind: protocol
 protocol: project
 version: 0.1.0
 compat: ">= 0.4.5"
-members: [project, decisions, journal, index, check, develop]
+members: [project, decisions, journal, index, check, owfadevelop]
 provides: [project.org.v1]
 skeleton: [PROJECT/]
 uninstall:
