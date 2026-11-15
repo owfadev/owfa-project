@@ -70,6 +70,19 @@ semantics to the LLM; the script writes only inside `PROJECT/`. Window parameter
 in the script source (journal main file ≤ 100 entries, overflow archived by month to
 `PROJECT/archive/<YYYY-MM>/journal.md`).
 
+## Member Roster
+
+The six members (versions verbatim from each PLUGIN.yaml; the `project` package, `kind: protocol` / `protocol: project` — version and compat floor see [PKG.yaml](../PKG.yaml)):
+
+| id | one line | version |
+|---|---|---|
+| project | Territory `PROJECT/` (the protocol's only one — the project tree is the body): `PROJECT/<member>/`; red lines — never modify project code, outside PROJECT/ read-only, no credentials | 0.1 |
+| decisions | Decisions ledger `PROJECT/decisions.md`: ADR-lite entries, append at bottom, never rewrite; the native tracker owns tasks, this owns reasons | 0.1 |
+| journal | Journal `PROJECT/journal.md`: prepend, never rewrite; entry via `pipeline.py journal`; >100 auto-archived to `PROJECT/archive/<m>/` | 0.1 |
+| index | Index `PROJECT/index.md`: derived page list + preserved hand `## Anchors` block; rebuild via `pipeline.py index`; code search is toolchain-native | 0.1 |
+| check | Protocol check `scripts/check.py`: journal/decisions/index/anchor consistency; project tests/lint stay toolchain-native; run via `kernel audit` / `pipeline.py verify` | 0.1 |
+| owfadevelop | Dev territory `PROJECT/owfadevelop/` (env page + release ledger); dev loop → owfa-develop command (①env ②sandbox ③iterate ④test ⑤release gate) | 0.1 |
+
 ## Red Lines (once more, they carry the protocol)
 
 1. The protocol never modifies project code.
@@ -108,10 +121,13 @@ toolchain-native and is not part of the ABI.
 org capabilities are protocol-only, one org holder per workspace, all-or-nothing
 members). The kernel owns the machinery (manifests, projections, package lifecycle);
 this protocol owns everything the kernel deliberately does not interpret. The AGENTS.md
-injection is additive into the project's own charter (P1b; the injection marker's
-name-parameterization lands with kernel 0.4.5 — until then a project workspace still
-carries the generic inject markers, mechanically identical, vocabulary to be cleaned by
-that kernel release).
+injection is additive into the project's own charter (P1b). On the marker vocabulary:
+the kernel made the injection-region marker id a parameterizable constant
+(`inject_markers()`, C3, kernel-home step 1 — shipped v0.4.4/0.4.5), but no call site
+drives it with a per-protocol name: through the current release (kernel 0.4.8) all
+projections still emit the generic `wiki-inject` markers, so a project workspace
+carries generic inject markers, mechanically identical to the vaultwiki ones — the
+vocabulary cleanup remains unshipped kernel work.
 
 ## Scope rulings（owner 定稿）
 
