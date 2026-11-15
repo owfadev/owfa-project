@@ -99,7 +99,8 @@ the decision ledger and the run journal, with the JSON envelope, error codes
 and addressing rules specified in [docs/abi.md](abi.md) (abi-spec v2). The
 entry kinds are `decision` and `journal` (the task-boundary ruling applied:
 tasks are the native tracker's, so no task kind exists); the change stream
-consumers get is the ledgers' mtime plus git, which stays toolchain-native.
+consumers get is the ledgers' mtime (best-effort `op`, see docs/abi.md); git history stays
+toolchain-native and is not part of the ABI.
 
 ## Relationship to the Kernel
 

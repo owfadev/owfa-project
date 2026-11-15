@@ -43,6 +43,9 @@ own rulings, recorded here:
 | `decision` | `decisions/D-<n>` | one ADR entry of `PROJECT/decisions.md` (heading `## D-<n> YYYY-MM-DD <title>`); `content` = the entry section verbatim, heading included |
 | `journal` | `journal/<YYYY-MM-DD>-<seq>` | one line of `PROJECT/journal.md`; `seq` is 1-based among same-date entries, **oldest first** — stable under the journal's prepend-at-top discipline (new entries get the next seq within their date; existing addrs never shift). `content` = the raw line |
 
+- Entries whose headings/lines do not match the canonical formats above are silently not addressable (only well-formed entries exist to the ABI).
+- The journal type vocabulary is hard-coded in `proto_query.py` in lockstep with the journal plugin's TYPE_ORDER (check.py guards it; extending one requires extending the other).
+
 Only the journal main file is enumerated; `PROJECT/archive/` (the immutable
 zone) and `PROJECT/packages/` (machine zone) are not part of the ABI surface.
 

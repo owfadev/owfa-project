@@ -57,7 +57,7 @@ PROTOCOL_ID = "project"
 KINDS = ("decision", "journal")
 DECISION_RE = re.compile(r"^## (D-\d+) (\d{4}-\d{2}-\d{2}) (.+?)\s*$", re.M)
 JOURNAL_RE = re.compile(r"^- (\d{4}-\d{2}-\d{2}) (map|save|check|plugin|develop|other)[：:]\s*(.+?)\s*$")
-WINDOW_RE = re.compile(r"^(\d+)([dm])$")
+WINDOW_RE = re.compile(r"^([1-9]\d*)([dm])$")
 
 
 # ---------- version (single source: PKG.yaml beside this script) ----------
