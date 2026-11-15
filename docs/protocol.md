@@ -93,11 +93,14 @@ permanent tax.
 
 ## The ABI Surface (semantic anchor only)
 
-The first real consumer of the protocol ABI is this package: `list` (PROJECT/ pages +
-anchors), `get`, `search` (PROJECT/ full text + anchor metadata), `recent` (journal
-tail + `git log` summary — a project protocol's change stream gets git for free).
-**These four semantics are anchored here; the concrete command shapes wait for the ABI
-standardization round — nothing in this repository implements them yet.**
+The ABI surface is shipped as of 0.1.1: the package-root `proto_query.py`
+implements the four semantics — `list` / `get` / `search` / `recent` — over
+the decision ledger and the run journal, with the JSON envelope, error codes
+and addressing rules specified in [docs/abi.md](abi.md) (abi-spec v2). The
+entry kinds are `decision` and `journal` (the task-boundary ruling applied:
+tasks are the native tracker's, so no task kind exists); the change stream
+consumers get is the ledgers' mtime (best-effort `op`, see docs/abi.md); git history stays
+toolchain-native and is not part of the ABI.
 
 ## Relationship to the Kernel
 
