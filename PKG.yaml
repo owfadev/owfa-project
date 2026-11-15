@@ -1,15 +1,19 @@
 schema_version: 1
 id: project
-version: 0.2
-compat: ">= 0.2"
-members: [project]
-connectors: []
-depends: [framework]
+kind: protocol
+protocol: project
+version: 0.1.0
+compat: ">= 0.4.5"
+members: [project, decisions, journal, index, check, owfadevelop]
+provides: [project.org.v1]
+skeleton: [PROJECT/]
 uninstall:
-  retains: [projects/, wiki/projects.md]
+  # anchors = the append-only ledgers, the human-owned trace (M2: derived pages carry no anchor)
+  anchors: [PROJECT/decisions.md, PROJECT/journal.md]
+  # retains covers the skeleton (R5); PROJECT/packages/ is the machine zone — deleted on
+  # planned machine zone — enforcement rides kernel-home (uninstall does not sweep it today)
+  retains: [PROJECT/]
   credentials: []
   bridges: []
   processes: []
-disclosure: "No network access; manages project workspaces under projects/ (full agent read/write inside each container); privacy depends on project content — it never enters the framework repo."
-menu:
-  project: project container domain — workspaces under projects/ + declaration page
+disclosure: "Purely local project-workspace organization (PROJECT/ ledger pages, derived index, protocol check, dev-loop command); no network services, no credentials; the protocol never modifies project code and touches nothing outside PROJECT/."
