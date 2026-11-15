@@ -16,7 +16,7 @@ other for the residue.
 
 - Single file `PROJECT/journal.md`; entries prepended at the top, newest on top
 - Entry format: `- YYYY-MM-DD <type>: one-sentence summary`
-- Type enum: map/save/check/plugin/develop/other; instances may extend
+- Type enum: map/save/check/plugin/develop/other; extensions ride TYPE_ORDER + check.py in lockstep (protocol-source change, not per-instance)
 
 ## Invariants
 

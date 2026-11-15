@@ -33,7 +33,7 @@ What this member owns:
 │   ├── decisions.md       # append-only: decision ledger (decisions member)
 │   ├── journal.md         # prepend-append: run journal (journal member)
 │   ├── packages/          # machine zone: packages installed into this workspace; deleted on uninstall, not protected by retains
-│   └── <member>/          # member territories (PROJECT/dev/ for develop, …)
+│   └── <member>/          # member territories (PROJECT/owfadevelop/ for owfadevelop, …)
 └── AGENTS.md              # project agent charter (additive injection)
 ```
 

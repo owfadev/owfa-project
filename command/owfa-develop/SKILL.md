@@ -13,7 +13,7 @@ description: "Run the project dev loop: environment / sandbox / iterate / test /
 
 For project-protocol workspaces (the project tree is the body; protocol machinery lives
 under `PROJECT/`). Operational detail and territory contracts: read
-`.owfa/plugins/domains/project/develop/PLUGIN.md` first and stay aligned with it.
+`.owfa/plugins/domains/project/owfadevelop/PLUGIN.md` first and stay aligned with it.
 
 ## Scope
 

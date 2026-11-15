@@ -54,7 +54,7 @@ Vocabulary extras and their dispositions:
 |---|---|
 | **project tree** | The repository itself — code, docs, data; the protocol's body, zero protocol containers |
 | **PROJECT/** | The protocol's single territory directory; every protocol write lands inside it |
-| **member territory** | `PROJECT/<member>/` (e.g. `PROJECT/dev/`); the extension point for future member dimensions |
+| **member territory** | `PROJECT/<member>/` (e.g. `PROJECT/owfadevelop/`); the extension point for future member dimensions |
 | **workspace marker** | `.owfa/WORKSPACE.yaml` — kernel-home discovery applies as-is |
 | **anchors** | Hand-declared project entry points in `PROJECT/index.md`'s `## Anchors` block — where the body's doors are |
 | **ledger / journal** | decisions.md (append-at-bottom, the why) vs journal.md (prepend-top, rolling window, the what) |
