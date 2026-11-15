@@ -2,8 +2,13 @@ schema_version: 1
 id: project
 kind: protocol
 protocol: project
-version: 0.1.0
+version: 0.1.1
 compat: ">= 0.4.5"
+abi:
+  # abi-spec v2 §5 — the ABI access face this package ships (docs/abi.md has the full rules)
+  semantics: [list, get, search, recent]
+  search_lang: "case-insensitive substring match over entry title + body (decisions and journal entries)"
+  addr_doc: docs/abi.md
 members: [project, decisions, journal, index, check, owfadevelop]
 provides: [project.org.v1]
 skeleton: [PROJECT/]
