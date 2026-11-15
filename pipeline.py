@@ -29,7 +29,7 @@ semantic explanation):
 
 Index page determination (what enters the page list): all .md under PROJECT/,
 excluding reserved names (index.md, journal.md), the archive/ subtree (immutable
-zone) and the packages/ machine zone (installed packages, deleted on uninstall).
+zone) and the packages/ machine zone (installed packages — a planned machine zone; enforcement rides kernel-home).
 """
 import datetime
 import os

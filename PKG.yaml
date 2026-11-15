@@ -11,7 +11,7 @@ uninstall:
   # anchors = the append-only ledgers, the human-owned trace (M2: derived pages carry no anchor)
   anchors: [PROJECT/decisions.md, PROJECT/journal.md]
   # retains covers the skeleton (R5); PROJECT/packages/ is the machine zone — deleted on
-  # uninstall, deliberately NOT retained
+  # planned machine zone — enforcement rides kernel-home (uninstall does not sweep it today)
   retains: [PROJECT/]
   credentials: []
   bridges: []
