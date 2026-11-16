@@ -2,14 +2,14 @@
 name: owfa-develop
 owner: owfadevelop
 consumes: [owfadevelop, project]
-description: "Run the project dev loop: environment / sandbox / iterate / test / release gate — a five-step flow for developing a project whose workspace runs the project protocol. Triggers on: develop, dev loop, 开发迭代, iterate on this project, cut a release."
+description: "Run the project dev loop: target / environment / sandbox / iterate / test / release gate — for any project-protocol workspace, with the three owfa dev tracks when a target pin is in force. Triggers on: develop, dev loop, 开发迭代, iterate on this project, cut a release, 开发 owfa, owfa dev."
 ---
 
 <!-- cmd-inject:start -->
 
 <!-- cmd-inject:end -->
 
-# owfa-develop: The Five-Step Dev Loop
+# owfa-develop: The Dev Loop
 
 For project-protocol workspaces (the project tree is the body; protocol machinery lives
 under `PROJECT/`). Operational detail and territory contracts: read
@@ -19,15 +19,27 @@ under `PROJECT/`). Operational detail and territory contracts: read
 
 Write: PROJECT/ (dev territory, decisions, journal — per each member's contract),
 test-repo/ (disposable sandbox)
-Read: the project tree (code, docs, native self-description), PROJECT/owfadevelop/env.md,
+Read: the project tree (code, docs, native self-description),
+PROJECT/owfadevelop/target.md, PROJECT/owfadevelop/env.md,
 `.owfa/scripts/owfa_kernel.py`
+
+## Step 0 — the pin gate
+
+Read `PROJECT/owfadevelop/target.md` (absent → the generic loop, steps ①–⑤ below).
+Present and well-formed → the session's declared task target **must fall inside the
+pinned owfa component** (`owfa/kernel`, `owfa/protocol`, `owfa/package:<id>`):
+in-scope, proceed; out-of-scope, refuse — quote the pin, point at
+`PROJECT/decisions.md` for a pin change. Malformed pin → stop, fix the pin file first
+(the loop never enforces a pin it cannot parse; the check member flags it as an error).
+Never broaden scope mid-session; a second component is a second workspace or a pinned
+decision.
 
 ## Steps
 
-1. **Environment** — read `PROJECT/owfadevelop/env.md` (create it on first use from the host's
-   declarations: interpreter, package manager, PATH quirks, tool locations). Honor it
-   for the whole session; the host's mandates (e.g. a uv-only Python policy) are law,
-   never re-discovered ad hoc.
+1. **Environment** — read `PROJECT/owfadevelop/env.md` (create it on first use from the
+   host's declarations: interpreter, package manager, PATH quirks, tool locations).
+   Honor it for the whole session; the host's mandates (e.g. a uv-only Python policy) are
+   law, never re-discovered ad hoc.
 2. **Sandbox lifecycle** — `test-repo/` is the disposable arena: create it by copying the
    framework substrate (`.owfa` + `.agents`) and the project as the AGENTS shell, mirror
    the project repo in, and tear it down at session close. The sandbox's git is never
@@ -39,27 +51,46 @@ Read: the project tree (code, docs, native self-description), PROJECT/owfadevelo
    (README / docs / config: `python -m unittest discover`, `node test/smoke.js`, `make
    test`, whatever the project declares). The protocol adds no test rules; it requires
    the native suite green before any release action.
-5. **Release gate** — two clauses:
+5. **Release gate** — the generic clause plus, when a pin is in force, the track clause:
    - **Generic clause (every project)**: tests green (step ④) · version and changelog
-     updated · release ledger entry appended to `PROJECT/owfadevelop/releases.md` · journal entry
-     written (`develop` type) · the project's declared packaging/distribution steps run.
-   - **Dogfood clause (owfa developing owfa)**: on top of the generic clause —
-     `verify-release` / blessed-suite sync (`sync-blessed` / five-carrier parity) /
-     pre-tag verification discipline, per the framework repo's releasing doc
-     (`.owfa/docs/releasing.md`); the framework converting itself to this protocol is
-     the loop's strongest acceptance.
+     updated · release ledger entry appended to `PROJECT/owfadevelop/releases.md` ·
+     journal entry written (`develop` type) · the project's declared packaging /
+     distribution steps run.
+   - **Track: kernel** (`target: owfa/kernel`, repo `owfadev/owfa`): on top of the
+     generic clause — `node scripts/verify-release.js` (release gate: packlist, version
+     anchor, no local state) · `node test/smoke.js` · `python3
+     .owfa/scripts/owfa_kernel.py validate` · kernel unit tests
+     (`python3 -m unittest discover -s .owfa/tests`) · `python3 scripts/docs_lint.py` ·
+     PR with a fresh-context review (freshness per the bootstrap charter) · release
+     commit bumps `.owfa/VERSION` + `package.json` together (the tag must match) · tag
+     `vX.Y.Z` → npm publish rides CI provenance · after publish: upgrade the dev
+     instances' three zones (npm CLI / installed kernel / registry cache) and journal
+     the chain.
+   - **Track: protocol** (`target: owfa/protocol`, this package itself): the `abi:`
+     block is mandatory and must parse (R11 — an install-refusing error without it) ·
+     `proto_query.py` at the package root, exercised by the audit ABI smoke · registry
+     row updated with the new tag **and commit pin** (clone-then-verify anchor) · after
+     release: every connected workspace upgrades via its bridge, compat re-verified.
+   - **Track: package** (`target: owfa/package:<id>`, e.g. `owfadev/owfa-cuhksz`):
+     manifest/PLUGIN contract intact (id/version/deps/members) · the three projections
+     (AGENTS inject / registry / command skills) rebuild green in the sandbox · tag
+     `<id>-vX.Y.Z` · registry pin updated · the owning instance upgrades and
+     `kernel validate` goes green before the session closes.
 
 ## Close
 
 Append the release/session record (decisions entry when a durable conclusion emerged,
 with a back-reference to the journal line; always a journal line via
 `python .owfa/plugins/domains/project/pipeline.py journal develop "<one sentence>"`),
-then `pipeline.py verify`; commit per the project's own git discipline.
+then `pipeline.py verify`; commit per the project's own git discipline. If the session
+changed or removed the pin, the decisions entry is mandatory, not on-demand.
 
 ## Prohibitions
 
 - Never modify project code outside a declared task target (red line 1); never write
   outside PROJECT/ or test-repo/ without an explicit declared target (red line 2)
+- Under a pin, never touch a second owfa component in the same session — the refusal is
+  the feature
 - Never commit sandbox state; never let credentials enter any tree
 
 ## Language

@@ -41,7 +41,7 @@ Vocabulary extras and their dispositions:
 | vw extra | Disposition here |
 |---|---|
 | map (asset registration) | **Abandoned, defended**: the project tree is native; external material lands in `PROJECT/refs/` via save — no SHA mirror layer, the project repo's asset discipline is the project's |
-| save / query | **Command member**: owfa-develop carries the loop; distillation goes to decisions/journal; retrieval = index + anchors + native grep |
+| save / query | **Command member**: owfa-develop carries the loop (pin gate + five steps; three owfa dev tracks under a declared target); distillation goes to decisions/journal; retrieval = index + anchors + native grep |
 | tmp (draft transit) | `PROJECT/tmp/` — check only audits `stale_after`, zero retention promise |
 | hot (freshness) | **Into the AGENTS injection line** as an entering discipline: journal tail window + `git log` summary (freshness semantics kept, the page dropped) |
 | todo (working set) | **Abandoned, defended**: tasks are project-native (issues, TODO comments) — same boundary declaration as the vw project domain's |
@@ -58,7 +58,8 @@ Vocabulary extras and their dispositions:
 | **workspace marker** | `.owfa/WORKSPACE.yaml` — kernel-home discovery applies as-is |
 | **anchors** | Hand-declared project entry points in `PROJECT/index.md`'s `## Anchors` block — where the body's doors are |
 | **ledger / journal** | decisions.md (append-at-bottom, the why) vs journal.md (prepend-top, rolling window, the what) |
-| **release gate** | The develop loop's step ⑤: a generic clause for every project + a dogfood clause for owfa-on-owfa |
+| **target pin** | `PROJECT/owfadevelop/target.md` — declares the one owfa component this workspace develops (`owfa/<kernel\|protocol\|package:<id>>`); with the pin in force the dev loop refuses out-of-target work, and changing the pin goes through decisions (see the owfadevelop member) |
+| **release gate** | The develop loop's step ⑤: a generic clause for every project + the three owfa dev tracks (kernel / protocol / package) when a target pin is in force |
 | **red lines** | The protocol never modifies project code; outside `PROJECT/` is read-only (writes only via explicitly declared command targets); credentials never tracked |
 
 ## The Derived Machine

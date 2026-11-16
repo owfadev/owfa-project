@@ -2,8 +2,9 @@ schema_version: 1
 id: project
 kind: protocol
 protocol: project
-version: 0.1.1
-compat: ">= 0.4.6"  # floor raised from >= 0.4.5: 0.4.6 guarantees the ABI-validation kernel machinery for protocol packages with an abi block
+version: 0.3
+# floor raised from >= 0.4.5: 0.4.6 guarantees the ABI-validation kernel machinery
+compat: ">= 0.4.6"
 abi:
   # abi-spec v2 §5 — the ABI access face this package ships (docs/abi.md has the full rules)
   semantics: [list, get, search, recent]

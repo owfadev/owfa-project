@@ -6,8 +6,10 @@ project — the project tree is the body, and the protocol owns exactly one terr
 directory, `PROJECT/`. Six members (project, decisions, journal, index, check, develop)
 give the workspace a self-sufficient baseline: an ADR-lite decision ledger, a rolling
 run journal, a project-aware index with declared anchors, a scoped protocol check, and
-a five-step dev-loop command (`owfa-develop`) with a generic release gate plus a
-dogfood clause for owfa-on-owfa. Replaces this repository's former content (the legacy
+a five-step dev-loop command (`owfa-develop`) with a generic release gate plus the
+three owfa dev tracks (kernel / protocol / package) — and a **target pin**: a workspace
+declaring `target: owfa/<component>` in `PROJECT/owfadevelop/target.md` is pinned to
+developing exactly that component, out-of-target work refused by the loop. Replaces this repository's former content (the legacy
 vw `projects/`-container domain package, which remains installable dual-track with a
 one-year sunset review after the bridge stabilizes).
 

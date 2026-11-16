@@ -20,6 +20,7 @@ Rule set (mechanical, in `scripts/check.py`):
 | 4 | Index page list equals the actual PROJECT/ page set (drift → `pipeline.py index`) | warning |
 | 5 | Every declared anchor exists in the repository (anchor drift) | warning |
 | 6 | `.owfa/WORKSPACE.yaml` present (workspace marker) | info |
+| 7 | The owfadevelop pin, once present, parses: exactly one `target: owfa/<kernel\|protocol\|package:<id>>` line plus a non-empty `why:` line | error |
 
 Semantic items (not scriptable): writes outside `PROJECT/` without a declared target →
 error; historical ledger entries modified → error (both verifiable via git, per the
@@ -34,5 +35,8 @@ instance-git discipline).
 
 ## Changelog
 
+- 0.2 2026-11-16: rule 7 — the owfadevelop target pin (`PROJECT/owfadevelop/target.md`)
+  must parse when present (exactly one target line + why); the loop never enforces a pin
+  it cannot read.
 - 0.1 2026-11-15: first release with the protocol package (spec v2) — six mechanical
   rules + two semantic items; own-tree walk, no wikilib dependency
