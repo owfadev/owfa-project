@@ -2,7 +2,7 @@ schema_version: 1
 id: project
 kind: protocol
 protocol: project
-version: 0.3
+version: 0.4
 # floor raised from >= 0.4.5: 0.4.6 guarantees the ABI-validation kernel machinery
 compat: ">= 0.4.6"
 abi:
@@ -10,7 +10,7 @@ abi:
   semantics: [list, get, search, recent]
   search_lang: "case-insensitive substring match over entry title + body (decisions and journal entries)"
   addr_doc: docs/abi.md
-members: [project, decisions, journal, index, check, owfadevelop]
+members: [project, decisions, journal, index, check]
 provides: [project.org.v1]
 skeleton: [PROJECT/]
 uninstall:
@@ -22,4 +22,4 @@ uninstall:
   credentials: []
   bridges: []
   processes: []
-disclosure: "Purely local project-workspace organization (PROJECT/ ledger pages, derived index, protocol check, dev-loop command); no network services, no credentials; the protocol never modifies project code and touches nothing outside PROJECT/."
+disclosure: "Purely local project-workspace organization (PROJECT/ ledger pages, derived index, protocol check); the owfa-development member is a separate optional package since 0.4; no network services, no credentials; the protocol never modifies project code and touches nothing outside PROJECT/."

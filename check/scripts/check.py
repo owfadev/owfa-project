@@ -14,7 +14,6 @@ TYPES = ("map", "save", "check", "plugin", "develop", "other")
 DATE_RE = re.compile(r"^- (\d{4}-\d{2}-\d{2}) ([A-Za-z]+)(?:[\uff1a:]|\s)")   # - YYYY-MM-DD type：one sentence
 D_RE = re.compile(r"^## D-(\d+) (\d{4}-\d{2}-\d{2}) ")
 JOURNAL_MAX = 100
-TARGET_RE = re.compile(r"^target: owfa/(kernel|protocol|package:[\w.-]+)\s*$")   # the owfadevelop pin, exactly one
 
 
 def _walk_md(root_proj):
@@ -38,18 +37,6 @@ def check(ctx):
     # workspace marker
     if not os.path.isfile(os.path.join(root, ".owfa", "WORKSPACE.yaml")):
         issues.append({"level": "info", "message": "工作区标记 .owfa/WORKSPACE.yaml 缺失（kernel-home F2 发现依赖它）"})
-
-    # the owfadevelop pin: present → must parse (exactly one target line + a why line)
-    tpath = os.path.join(proj, "owfadevelop", "target.md")
-    if os.path.isfile(tpath):
-        lines = open(tpath, encoding="utf-8").read().splitlines()
-        targets = [raw for raw in lines if raw.startswith("target:")]
-        if len(targets) != 1 or not TARGET_RE.match(targets[0]):
-            issues.append({"level": "error",
-                           "message": "PROJECT/owfadevelop/target.md 钉子不可解析（须恰好一行 "
-                                      "`target: owfa/<kernel|protocol|package:<id>>`）——dev loop 拒绝执行无法解析的钉子"})
-        if not any(raw.startswith("why:") and raw[len("why:"):].strip() for raw in lines):
-            issues.append({"level": "error", "message": "PROJECT/owfadevelop/target.md 缺 why: 一句话理由（改钉须留痕）"})
 
     # journal discipline: date + enum, main file and archive alike
     journal_files = []

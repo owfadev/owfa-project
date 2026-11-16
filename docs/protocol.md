@@ -41,7 +41,7 @@ Vocabulary extras and their dispositions:
 | vw extra | Disposition here |
 |---|---|
 | map (asset registration) | **Abandoned, defended**: the project tree is native; external material lands in `PROJECT/refs/` via save — no SHA mirror layer, the project repo's asset discipline is the project's |
-| save / query | **Command member**: owfa-develop carries the loop (pin gate + five steps; three owfa dev tracks under a declared target); distillation goes to decisions/journal; retrieval = index + anchors + native grep |
+| save / query | **Command member**: the optional owfadevelop package's `owfa-develop` carries the dev loop (pin gate + five steps; three owfa dev tracks under a declared target); distillation goes to decisions/journal; retrieval = index + anchors + native grep |
 | tmp (draft transit) | `PROJECT/tmp/` — check only audits `stale_after`, zero retention promise |
 | hot (freshness) | **Into the AGENTS injection line** as an entering discipline: journal tail window + `git log` summary (freshness semantics kept, the page dropped) |
 | todo (working set) | **Abandoned, defended**: tasks are project-native (issues, TODO comments) — same boundary declaration as the vw project domain's |
@@ -54,12 +54,12 @@ Vocabulary extras and their dispositions:
 |---|---|
 | **project tree** | The repository itself — code, docs, data; the protocol's body, zero protocol containers |
 | **PROJECT/** | The protocol's single territory directory; every protocol write lands inside it |
-| **member territory** | `PROJECT/<member>/` (e.g. `PROJECT/owfadevelop/`); the extension point for future member dimensions |
+| **member territory** | `PROJECT/<member>/`; the extension point for future member dimensions (an optional package like owfadevelop extends the same way — its territory is `PROJECT/owfadevelop/`) |
 | **workspace marker** | `.owfa/WORKSPACE.yaml` — kernel-home discovery applies as-is |
 | **anchors** | Hand-declared project entry points in `PROJECT/index.md`'s `## Anchors` block — where the body's doors are |
 | **ledger / journal** | decisions.md (append-at-bottom, the why) vs journal.md (prepend-top, rolling window, the what) |
-| **target pin** | `PROJECT/owfadevelop/target.md` — declares the one owfa component this workspace develops (`owfa/<kernel\|protocol\|package:<id>>`); with the pin in force the dev loop refuses out-of-target work, and changing the pin goes through decisions (see the owfadevelop member) |
-| **release gate** | The develop loop's step ⑤: a generic clause for every project + the three owfa dev tracks (kernel / protocol / package) when a target pin is in force |
+| **target pin** | `PROJECT/owfadevelop/target.md` — declares the one owfa component this workspace develops (`owfa/<kernel\|protocol\|package:<id>>`); with the pin in force the dev loop refuses out-of-target work, and changing the pin goes through decisions. Territory of the OPTIONAL [`owfadevelop`](https://github.com/owfadev/owfa-owfadevelop) package (needs this protocol), not a protocol member |
+| **release gate** | The develop loop's step ⑤ (carrier: the optional owfadevelop package): a generic clause for every project + the three owfa dev tracks (kernel / protocol / package) when a target pin is in force |
 | **red lines** | The protocol never modifies project code; outside `PROJECT/` is read-only (writes only via explicitly declared command targets); credentials never tracked |
 
 ## The Derived Machine
@@ -73,7 +73,7 @@ in the script source (journal main file ≤ 100 entries, overflow archived by mo
 
 ## Member Roster
 
-The six members (versions verbatim from each PLUGIN.yaml; the `project` package, `kind: protocol` / `protocol: project` — version and compat floor see [PKG.yaml](../PKG.yaml)):
+The five members (versions verbatim from each PLUGIN.yaml; the `project` package, `kind: protocol` / `protocol: project` — version and compat floor see [PKG.yaml](../PKG.yaml)):
 
 | id | one line | version |
 |---|---|---|
@@ -81,8 +81,8 @@ The six members (versions verbatim from each PLUGIN.yaml; the `project` package,
 | decisions | Decisions ledger `PROJECT/decisions.md`: ADR-lite entries, append at bottom, never rewrite; the native tracker owns tasks, this owns reasons | 0.1 |
 | journal | Journal `PROJECT/journal.md`: prepend, never rewrite; entry via `pipeline.py journal`; >100 auto-archived to `PROJECT/archive/<m>/` | 0.1 |
 | index | Index `PROJECT/index.md`: derived page list + preserved hand `## Anchors` block; rebuild via `pipeline.py index`; code search is toolchain-native | 0.1 |
-| check | Protocol check `scripts/check.py`: journal/decisions/index/anchor consistency; project tests/lint stay toolchain-native; run via `kernel audit` / `pipeline.py verify` | 0.1 |
-| owfadevelop | Dev territory `PROJECT/owfadevelop/` (env page + release ledger); dev loop → owfa-develop command (①env ②sandbox ③iterate ④test ⑤release gate) | 0.1 |
+| check | Protocol check `scripts/check.py`: journal/decisions/index/anchor consistency; project tests/lint stay toolchain-native; run via `kernel audit` / `pipeline.py verify` | 0.3 |
+
 
 ## Red Lines (once more, they carry the protocol)
 

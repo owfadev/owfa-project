@@ -7,8 +7,6 @@ updated: 2026-11-15
 attachment:
   - "PROJECT/decisions.md — the decision ledger: ADR-lite entries (context / decision / consequence), appended at the bottom, never rewritten"
 fields: {}
-usage_routes:
-  - owfa-develop
 inject: "Decisions ledger `PROJECT/decisions.md`: ADR-lite entries (`D-<n> YYYY-MM-DD` + context/decision/consequence), append at bottom, never rewrite; the native tracker owns tasks, this owns reasons; details PLUGIN.md"
 usage:
   - Appending (manual, semantic): a decision is written when it is made — entry number continues the ledger (D-1, D-2, …), superseding is recorded as a new entry referencing the old one, never an edit
