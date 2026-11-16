@@ -3,13 +3,15 @@
 **OWFA project protocol package** — the second `kind: protocol` package (`protocol:
 project`, `provides: project.org.v1`): for workspaces whose primary product *is* the
 project — the project tree is the body, and the protocol owns exactly one territory
-directory, `PROJECT/`. Six members (project, decisions, journal, index, check, develop)
+directory, `PROJECT/`. Five members (project, decisions, journal, index, check)
 give the workspace a self-sufficient baseline: an ADR-lite decision ledger, a rolling
-run journal, a project-aware index with declared anchors, a scoped protocol check, and
-a five-step dev-loop command (`owfa-develop`) with a generic release gate plus the
-three owfa dev tracks (kernel / protocol / package) — and a **target pin**: a workspace
-declaring `target: owfa/<component>` in `PROJECT/owfadevelop/target.md` is pinned to
-developing exactly that component, out-of-target work refused by the loop. Replaces this repository's former content (the legacy
+run journal, a project-aware index with declared anchors, and a scoped protocol check.
+Developing owfa itself is NOT bundled: install the optional
+[`owfadevelop`](https://github.com/owfadev/owfa-owfadevelop) package (needs this
+protocol) — it carries the `owfa-develop` dev-loop command, the three owfa dev tracks
+(kernel / protocol / package), and the **target pin**: a workspace declaring
+`target: owfa/<component>` in `PROJECT/owfadevelop/target.md` is pinned to developing
+exactly that component, out-of-target work refused by the loop. Replaces this repository's former content (the legacy
 vw `projects/`-container domain package, which remains installable dual-track with a
 one-year sunset review after the bridge stabilizes).
 

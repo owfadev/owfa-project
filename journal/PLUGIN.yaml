@@ -8,8 +8,6 @@ attachment:
   - "PROJECT/journal.md — single-file run journal (rolling window)"
   - "PROJECT/archive/<YYYY-MM>/journal.md — archive spillover (immutable zone, grouped by entry month)"
 fields: {}
-usage_routes:
-  - owfa-develop
 inject: "Journal `PROJECT/journal.md`: prepend, never rewrite; entry = date + type (map/save/check/plugin/develop/other) + one sentence via `pipeline.py journal`; >100 auto-archived to `PROJECT/archive/<m>/`; details PLUGIN.md"
 usage:
   - Writing lines (mechanical, automatic): `python .owfa/plugins/domains/project/pipeline.py journal <type> "<one sentence>"` (type value set in the journal block of the AGENTS injection region); rolling window and archiving are performed by the script
