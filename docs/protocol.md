@@ -58,6 +58,7 @@ Vocabulary extras and their dispositions:
 | **workspace marker** | `.owfa/WORKSPACE.yaml` — kernel-home discovery applies as-is |
 | **anchors** | Hand-declared project entry points in `PROJECT/index.md`'s `## Anchors` block — where the body's doors are |
 | **ledger / journal** | decisions.md (append-at-bottom, the why) vs journal.md (prepend-top, rolling window, the what) |
+| **target pin** | `PROJECT/owfadevelop/target.md` — declares the one owfa component this workspace develops (`owfa/<kernel\|protocol\|package:<id>>`); with the pin in force the dev loop refuses out-of-target work, and changing the pin goes through decisions (see the owfadevelop member) |
 | **release gate** | The develop loop's step ⑤: a generic clause for every project + a dogfood clause for owfa-on-owfa |
 | **red lines** | The protocol never modifies project code; outside `PROJECT/` is read-only (writes only via explicitly declared command targets); credentials never tracked |
 

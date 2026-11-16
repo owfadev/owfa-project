@@ -1,20 +1,22 @@
 id: owfadevelop
 schema_version: 1
-version: 0.1
+version: 0.2
 depends:
   - project
   - decisions
   - journal
-updated: 2026-11-15
+updated: 2026-11-16
 attachment:
-  - "PROJECT/owfadevelop/ — development knowledge territory: env.md (environment page — host declarations the dev loop must honor) and releases.md (release ledger, append-only)"
-  - "command/owfa-develop/SKILL.md — the five-step dev-loop command"
+  - "PROJECT/owfadevelop/ — development knowledge territory: target.md (the pin — which owfa component this workspace develops; absent = the generic dev loop), env.md (environment page — host declarations the dev loop must honor) and releases.md (release ledger, append-only)"
+  - "command/owfa-develop/SKILL.md — the five-step dev-loop command; carries the generic loop plus the three owfa dev tracks when a target pin is declared"
 fields: {}
 commands:
   - owfa-develop
-inject: "Dev territory `PROJECT/owfadevelop/` (env page + release ledger); dev loop → owfa-develop command (①env ②sandbox ③iterate ④test ⑤release gate: generic + dogfood clauses); conclusions distill to decisions.md; details PLUGIN.md"
+inject: "Dev territory `PROJECT/owfadevelop/` (target pin + env page + release ledger); dev loop → owfa-develop command (①env ②sandbox ③iterate ④test ⑤release gate); a declared owfa target pins this workspace's project — the loop refuses out-of-target work; details PLUGIN.md"
 usage:
+  - "Pin semantics: a workspace's nature is decided by its protocol; the project protocol makes the workspace a project. A target declared in PROJECT/owfadevelop/target.md (`target: owfa/<kernel|protocol|package:<id>>`) makes that project concrete — this workspace develops exactly that owfa component and nothing else; the loop refuses work outside the declared target, and changing the pin requires a decisions entry"
   - Dev-loop sessions run via the owfa-develop command (its SKILL is the operational detail); every session closes with a `develop` journal entry
   - Distillation (on-demand bridge): a dev session's durable conclusion lands in PROJECT/decisions.md as a D-entry referencing the session's journal entry — process stays in the journal, reasons land in the ledger
 checks:
-  - PROJECT/owfadevelop/env.md present once the territory is used (absent = the loop reads host declarations from nowhere) → info
+  - "target.md, once present, must carry exactly one `target: owfa/...` line plus a one-line why; a malformed pin is a check error (the loop must never enforce a pin it cannot parse)"
+  - "PROJECT/owfadevelop/env.md present once the territory is used (absent = the loop reads host declarations from nowhere) → info"
