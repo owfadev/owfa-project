@@ -22,4 +22,4 @@ uninstall:
   credentials: []
   bridges: []
   processes: []
-disclosure: "Purely local project-workspace organization (PROJECT/ ledger pages, derived index, protocol check, dev-loop command); no network services, no credentials; the protocol never modifies project code and touches nothing outside PROJECT/."
+disclosure: "Purely local project-workspace organization (PROJECT/ ledger pages, derived index, protocol check); the owfa-development member is a separate optional package since 0.4; no network services, no credentials; the protocol never modifies project code and touches nothing outside PROJECT/."
