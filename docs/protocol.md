@@ -41,7 +41,7 @@ Vocabulary extras and their dispositions:
 | vw extra | Disposition here |
 |---|---|
 | map (asset registration) | **Abandoned, defended**: the project tree is native; external material lands in `PROJECT/refs/` via save — no SHA mirror layer, the project repo's asset discipline is the project's |
-| save / query | **Command member**: owfa-develop carries the loop; distillation goes to decisions/journal; retrieval = index + anchors + native grep |
+| save / query | **Command member**: owfa-develop carries the loop (pin gate + five steps; three owfa dev tracks under a declared target); distillation goes to decisions/journal; retrieval = index + anchors + native grep |
 | tmp (draft transit) | `PROJECT/tmp/` — check only audits `stale_after`, zero retention promise |
 | hot (freshness) | **Into the AGENTS injection line** as an entering discipline: journal tail window + `git log` summary (freshness semantics kept, the page dropped) |
 | todo (working set) | **Abandoned, defended**: tasks are project-native (issues, TODO comments) — same boundary declaration as the vw project domain's |

@@ -6,6 +6,7 @@ depends:
   - decisions
   - journal
   - index
+  - owfadevelop
 updated: 2026-11-16
 attachment:
   - "scripts/check.py — attached audit (the protocol's health surface, mechanical items)"
